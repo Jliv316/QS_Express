@@ -13,13 +13,10 @@ app.get('/api/v1/foods', (req, res) => {
 
 
 // server spin and listen
-app.listen(app.get('port'), () => {
-  console.log(`Listening on port ${app.get('port')}`)
-});
+const port = process.env.PORT || 8000;
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+app.listen(app.get('port'), () => {
+  console.log(`Listening on port... ${port}`)
+});
 
 // module.exports = router;
