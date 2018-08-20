@@ -3,20 +3,28 @@ var router = express.Router();
 const app = express();
 
 // imports
-import FoodsController from './controllers/foods_controller';
+const FoodsController = require('../controllers/foods')
 
 // foods
 app.get('/api/v1/foods', (req, res) => {
   FoodsController.index(req, res);
 });
 
+app.get('/api/v1/foods/:id', (req, res) => {
+  FoodsController.show(req, res);
+});
+
+app.get('/', (req, res) => {
+  res.send('hello world!');
+});
+
 
 
 // server
-const port = process.env.PORT || 8000;
+app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), () => {
-  console.log(`Listening on port... ${port}`)
+  console.log(`Listening on port... ${app.get('port')}`)
 });
 
 // module.exports = router;
