@@ -5,9 +5,13 @@ const app = express();
 // imports
 const MealsController = require('../controllers/meals')
 
-// foods
+// meals
 app.get('/api/v1/meals', (req, res) => {
   MealsController.index(req, res);
+});
+
+app.get('/api/v1/meals/:meal_id/foods', (req, res) => {
+  MealsController.show(req, res);
 });
 
 // server

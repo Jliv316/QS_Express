@@ -6,10 +6,10 @@ class MealsController {
     res.status(200).json(meals);
   }
 
-  // static async show(req, res) {
-  //   let foods = await Food.getFood(req, res);
-  //   res.status(200).json(foods);
-  // }
+  static async show(req, res) {
+    let meal = await Meal.getMeal(req, res);
+    res.status(200).json(meal);
+  }
 
   // static create(req, res) {
   //   let food = Food.createFood(req, res);
