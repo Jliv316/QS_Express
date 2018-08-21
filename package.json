@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js  --hot --inline",
+    "build": "./node_modules/webpack/bin/webpack.js",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -11,9 +13,13 @@
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "knex": "^0.15.2",
+    "mocha": "^5.2.0",
     "morgan": "~1.9.0",
     "pg": "^7.4.3",
     "pug": "2.0.0-beta11",
     "webpack": "^4.16.5"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
   }
 }
