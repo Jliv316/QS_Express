@@ -14,6 +14,10 @@ app.get('/api/v1/foods/:id', (req, res) => {
   FoodsController.show(req, res);
 });
 
+app.post('/api/v1/foods', (req, res) => {
+  FoodsController.create(req, res);
+});
+
 app.get('/', (req, res) => {
   res.send('hello world!');
 });
