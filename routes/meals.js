@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+// foods
+app.get('/api/v1/meals', (req, res) => {
+  MealsController.index(req, res);
 });
 
 module.exports = router;

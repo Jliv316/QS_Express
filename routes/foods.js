@@ -18,6 +18,10 @@ app.post('/api/v1/foods', (req, res) => {
   FoodsController.create(req, res);
 });
 
+app.patch('/api/v1/foods/:id', (req, res) => {
+  FoodsController.update(req, res);
+});
+
 app.get('/', (req, res) => {
   res.send('hello world!');
 });
