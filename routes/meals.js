@@ -14,11 +14,11 @@ app.get('/api/v1/meals/:meal_id/foods', (req, res) => {
   MealsController.show(req, res);
 });
 
-// server
-app.set('port', process.env.PORT || 3000);
+// // server
+// app.set('port', process.env.PORT || 3000);
 
-app.listen(app.get('port'), () => {
-  console.log(`Listening on port... ${app.get('port')}`)
-});
+// app.listen(app.get('port'), () => {
+//   console.log(`Listening on port... ${app.get('port')}`)
+// });
 
-module.exports = router;
+module.exports = app;

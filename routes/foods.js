@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const app = express();
 
+
 // imports
 const FoodsController = require('../controllers/foods')
 
@@ -35,4 +36,4 @@ app.listen(app.get('port'), () => {
   console.log(`Listening on port... ${app.get('port')}`)
 });
 
-// module.exports = router;
+module.exports = app;
