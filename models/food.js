@@ -12,8 +12,8 @@ class Food {
   }
 
   static async createFood(req, res) {
-    const food = req.body;
-
+    const food = req.body.food;
+    
     for (let requiredParameter of ['name', 'calories']) {
       if (!food[requiredParameter]) {
         return res
@@ -23,7 +23,7 @@ class Food {
     }
 
     try {
-      const result = await database('foods').insert(food, 'id')
+      const result = await database('foods').insert(food)
       const newFood = await database('foods').where('id', result[0])
       return { status: 200, data: newFood };
     } catch (error) {
