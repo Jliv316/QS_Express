@@ -20,6 +20,11 @@ class FoodsController {
     let updatedFood = await Food.updateFood(req, res)
     res.status(200).json(updatedFood);
   }
+
+  static async delete(req, res){
+    let result = await Food.deleteFood(req, res)
+    res.status(204).json({status: "food has successfully been deleted"})
+  }
   
 }
 

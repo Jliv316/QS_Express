@@ -15,7 +15,6 @@ class Food {
     let newFood = req.body.food;
    return await database('foods').insert(newFood)
       .returning(['id', 'name', 'calories'])
-    return 
   }
 
   static async updateFood(req, res) {
@@ -28,6 +27,10 @@ class Food {
       })
       .returning(['id', 'name', 'calories'])
     return food
+  }
+
+  static async deleteFood(req, res){
+    await database('foods').where('id', req.params.id).delete()
   }
 }
 

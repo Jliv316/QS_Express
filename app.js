@@ -33,6 +33,10 @@ app.patch('/api/v1/foods/:id', (req, res) => {
   FoodsController.update(req, res);
 });
 
+app.delete('/api/v1/foods/:id', (req, res) => {
+  FoodsController.delete(req, res);
+});
+
 app.get('/', (req, res) => {
   res.send('hello world!');
 });
