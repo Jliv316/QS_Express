@@ -3,6 +3,11 @@ const configuration = require('../knexfile')[environment];
 const database = require('knex')(configuration);
 
 class Meal {
+
+  static async singleMeal(req, res) {
+    return await database('meals').where('id', req.params.meal_id).select();
+  }
+
   static async getMeals(req, res) {
     let meals = await database('meals').select();
     let allMeals = await Promise.all(meals.map( async (meal) => {

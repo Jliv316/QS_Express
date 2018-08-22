@@ -11,26 +11,12 @@ class MealsController {
     res.status(200).json(meal);
   }
 
-  // static create(req, res) {
-  //   let food = Food.createFood(req, res);
-  //   res.status(201).json(food);
-  // }
-
-  // static update(req, res) {
-  //   let attributes = req.body.food
-  //   database('foods')
-  //     .where('id', req.params.id)
-  //     .update({
-  //       'name': attributes.name,
-  //       'calories': attributes.calories
-  //     })
-  //     .then(food => {
-  //       res.status(201).json({ id: food[0], name: attributes.name, calories: attributes.calories })
-  //     })
-  //     .catch(error => {
-  //       res.status(500).json({ error });
-  //     });
-  // }
+  static async create(req, res) {
+    let meal = await Meal.singleMeal(req, res);
+    let food = await Food.getFood(req, res);
+    let meal_food = await Meal.create(req, res);
+    res.status(201).json({message: `successfully added ${food.name} to ${meal.name}`});
+  }
 
 }
 
