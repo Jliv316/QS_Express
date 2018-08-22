@@ -7,16 +7,16 @@ class Meal {
     let meals = await database('meals').select();
     let mealFoods = await database('meal_foods').select();
     console.log(mealFoods);
-    let allMeals = await meals.map((meal) => {
-      let foods = database('foods')
+    let allMeals = await Promise.all(meals.map( async (meal) => {
+      let foods = await database('foods')
         .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
         .where('meal_foods.meal_id', meal.id)
         .select('foods.id', 'foods.name', 'foods.calories')
 
       meal['foods'] = foods;
-
+      console.log(foods);
       return meal
-    })
+    }))
   }
 
   static async getMeal(req, res) {
