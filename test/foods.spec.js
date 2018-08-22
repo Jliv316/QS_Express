@@ -29,6 +29,8 @@ describe('API Routes', () => {
     database.seed.run()
       .then(() => {
         return Promise.all([
+          database('meal_foods').del(),
+          database('meals').del(),
           database('foods').del()
         ])
       })
@@ -69,7 +71,6 @@ describe('API Routes', () => {
       chai.request(server)
         .get('/api/v1/foods')
         .end((err, response) => {
-          console.log(response.body)
           response.should.have.status(200);
           expect(response.body[0].name).to.eq('chicken')
           expect(response.body[0].calories).to.eq(100)

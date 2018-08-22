@@ -30,6 +30,8 @@ describe('API Routes', () => {
       .then(() => {
         return Promise.all([
           database('foods').del()
+          database('foods').del()
+          database('foods').del()
         ])
       })
       .then(() => {
