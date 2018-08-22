@@ -2,8 +2,8 @@
 
 
 Quantified Self
-A calorie tracker project for the fourth module
-Introduction
+
+[![Waffle.io - Issues in progress](https://badge.waffle.io/Jliv316/QS_Express.png?label=in%20progress&title=In%20Progress)](http://waffle.io/Jliv316/QS_Express)
 
 Pearson’s Law:
 
@@ -11,34 +11,8 @@ Pearson’s Law:
 
 Technology has enabled us to measure more, and shorten the period between measurement and reporting. Sensors are cheaper and smaller, computers are everywhere, and we can access data from anywhere. People who have recognized this, and applied it to themselves are part of a movement called “Quantified Self.”
 
-You are going to build a simple calorie tracker.
-Learning Goals
 
-    Create a Rails API given specified endpoints and response formats.
-    Create an Express API given specified endpoints and response formats.
-    Create an API in a new language of the students choice given specified endpoints and response formats.
-    Review and refactor code (in each of the three languages) so that it:
-        is well organized
-        clearly communicates intent
-        utilizes abstraction to hide complexity
-        breaks problems down into small methods/functions with a single responsibility
-
-Requirements Overview
-
-You will be creating an API in three separate languages that supports a front-end that users will utilize to track calories in meals that they eat.
-
-Your requirements for the application are detailed in the cards you’re going to create on Pivotal Tracker.
-Background: The Front End
-
-The application that consumes your API will have two main layouts. A “foods” index page and a “diary” index page (as seen below).
-Manage Foods
-
-quantifed-self-resource-management.png
-Main Diary
-
-quantified-self-diary.png
-
-At a high level, users will be able to:
+At a high level, users are able to:
 
     CRUD foods
     Add a food to a meal
@@ -46,13 +20,27 @@ At a high level, users will be able to:
     View calorie calculations in diary
     Data persists across refreshes
 
-Back End Features
+## Run In Development
 
-During the three weeks of this project, you’ll get the opportunity to build an API in three interations. First, you’ll build it in Rails. Second, you’ll build it using Node, Express, and Knex. Lastly, you’ll use a wild card programming language.
+    1) $ git clone https://github.com/Jliv316/QS_Express.git
+    2) $ git clone https://github.com/Jliv316/qs_client.git
+    
+    In the server:
+    
+    3) $ node app.js
+    
+    In the client:
+    
+    4) $ npm start
+    
+    In your browser:
+    
+    5) localhost:3000
+    
+# Main Diary Page
 
-    You’ll start each of your new backend repositories from scratch.
-    You’ll need to accept your email invitation from Pivotal Tracker and use this as your Project Management tool.
-    Create a Pivotal Tracker board and write stories for each of your endpoints.
-    Add your assigned Technical Lead to your Pivotal Tracker and your repository.
+<img width="618" alt="screen shot 2018-08-22 at 5 10 09 pm" src="https://user-images.githubusercontent.com/35744655/44495699-491ace00-a62e-11e8-9675-59366c1ddd35.png">
 
-You will need to build nine endpoints for each of the technologies you will be using. All endpoints will return the data as JSON.
+# Manage Foods Page
+
+<img width="511" alt="screen shot 2018-08-22 at 5 11 54 pm" src="https://user-images.githubusercontent.com/35744655/44495761-84b59800-a62e-11e8-8463-3adc831f9c0c.png">
