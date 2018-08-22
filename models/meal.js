@@ -5,6 +5,9 @@ const database = require('knex')(configuration);
 class Meal {
   static async getMeals(req, res) {
     let meals = await database('meals').select();
+    let meal_foods = await meals.map((meal) => {
+      
+    })
 
   }
 
