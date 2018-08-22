@@ -26,7 +26,6 @@ app.get('/api/v1/foods/:id', (req, res) => {
 });
 
 app.post('/api/v1/foods', (req, res) => {
-  console.log('hello');
   FoodsController.create(req, res);
 });
 
@@ -42,7 +41,6 @@ app.get('/', (req, res) => {
 
 // meals
 app.get('/api/v1/meals', (req, res) => {
-  console.log('for the love of god work!');
   MealsController.index(req, res);
 });
 

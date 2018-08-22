@@ -16,7 +16,6 @@ app.get('/api/v1/foods/:id', (req, res) => {
 });
 
 app.post('/api/v1/foods', (req, res) => {
-  console.log('hello');
   FoodsController.create(req, res);
 });
 

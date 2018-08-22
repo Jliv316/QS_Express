@@ -8,7 +8,6 @@ class Food {
   }
 
   static async getFood(req, res) {
-    console.log(req)
     return await database('foods').where('id', req.params.id).select()
   }
 
@@ -16,7 +15,21 @@ class Food {
     let newFood = req.body.food;
    return await database('foods').insert(newFood)
       .returning(['id', 'name', 'calories'])
+    return 
+  }
+
+  static async updateFood(req, res) {
+    let foodChanges = req.body.food;
+    let food = await database('foods')
+      .where('id', req.params.id)
+      .update({
+        'name': foodChanges.name,
+        'calories': foodChanges.calories
+      })
+      .returning(['id', 'name', 'calories'])
+    return food
   }
 }
+
 
 module.exports = Food;

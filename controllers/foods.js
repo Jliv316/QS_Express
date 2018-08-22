@@ -16,20 +16,9 @@ class FoodsController {
     res.status(201).json(food);
   }
 
-  static update(req, res){
-    let attributes = req.body.food
-    database('foods')
-      .where('id', req.params.id)
-      .update({
-        'name': attributes.name,
-        'calories': attributes.calories
-      })
-      .then(food => {
-        res.status(201).json({ id: food[0], name: attributes.name, calories: attributes.calories })
-      })
-      .catch(error => {
-        res.status(500).json({ error });
-      });
+  static async update(req, res){
+    let updatedFood = await Food.updateFood(req, res)
+    res.status(200).json(updatedFood);
   }
   
 }

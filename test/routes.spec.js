@@ -57,7 +57,6 @@ describe('API Routes', () => {
         })
         .end((err, response) => {
           response.should.have.status(201);
-          console.log(response.body)
           expect(response.body[0].name).to.eq('Chicken and Waffles')
           expect(response.body[0].calories).to.eq(750)
           done();
@@ -90,6 +89,25 @@ describe('API Routes', () => {
           response.should.have.status(200);
           expect(response.body[0].name).to.eq('chicken')
           expect(response.body[0].calories).to.eq(100)
+          done();
+        });
+    });
+  });
+
+  describe('PATCH /api/v1/foods/:id', () => {
+    it('should updated and return that food', done => {
+      chai.request(server)
+        .patch('/api/v1/foods/1')
+        .send({
+          food: {
+            name: "French Toast Sticks",
+            calories: 350
+          }
+        })
+        .end((err, response) => {
+          response.should.have.status(200);
+          expect(response.body[0].name).to.eq('French Toast Sticks')
+          expect(response.body[0].calories).to.eq(350)
           done();
         });
     });
