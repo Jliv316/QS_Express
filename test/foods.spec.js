@@ -56,10 +56,9 @@ describe('API Routes', () => {
           }
         })
         .end((err, response) => {
-
           response.should.have.status(201);
-          expect(response.body[0].name).to.eq('Chicken and Waffles')
-          expect(response.body[0].calories).to.eq(750)
+          expect(response.body.name).to.eq('Chicken and Waffles')
+          expect(response.body.calories).to.eq(750)
           done();
         });
     });
@@ -70,6 +69,7 @@ describe('API Routes', () => {
       chai.request(server)
         .get('/api/v1/foods')
         .end((err, response) => {
+          console.log(response.body)
           response.should.have.status(200);
           expect(response.body[0].name).to.eq('chicken')
           expect(response.body[0].calories).to.eq(100)
