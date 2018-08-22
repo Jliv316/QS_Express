@@ -26,8 +26,7 @@ class Meal {
       id: meal[0].id,
       name: meal[0].name,
       foods: [
-        {id: foods[0].id, name: foods[0].name, calories: foods[0].calories},
-        {id: foods[1].id, name: foods[1].name, calories: foods[1].calories}
+        {id: foods[0].id, name: foods[0].name, calories: foods[0].calories}
       ]
     }
     return meal_foods;

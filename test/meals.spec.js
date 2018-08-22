@@ -43,7 +43,6 @@ describe('API Routes', () => {
       .then(() => {
         return Promise.all([
           database('meal_foods').insert({ meal_id: 1, food_id: 1 }, 'id'),
-          database('meal_foods').insert({ meal_id: 1, food_id: 2 }, 'id'),
           database('meal_foods').insert({ meal_id: 2, food_id: 2 }, 'id'),
           database('meal_foods').insert({ meal_id: 2, food_id: 3 }, 'id'),
           database('meal_foods').insert({ meal_id: 3, food_id: 1 }, 'id'),
@@ -88,8 +87,6 @@ describe('API Routes', () => {
           expect(response.body.name).to.eq('Breakfast')
           expect(response.body.foods[0].name).to.eq('chicken')
           expect(response.body.foods[0].calories).to.eq(100)
-          expect(response.body.foods[1].name).to.eq('spicy chicken')
-          expect(response.body.foods[1].calories).to.eq(120)
           done();
         });
     });
@@ -104,7 +101,7 @@ describe('API Routes', () => {
           response.should.have.status(200);
           expect(response.body[0].name).to.eq('Breakfast')
           expect(response.body[0].foods[0].name).to.eq('chicken')
-          expect(response.body[0].foods[0].calories).to.eq('100')
+          expect(response.body[0].foods[0].calories).to.eq(100)
           
           done();
         });
