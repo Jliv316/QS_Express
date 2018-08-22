@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
 
 // meals
 app.get('/api/v1/meals', (req, res) => {
+  console.log('for the love of god work!');
   MealsController.index(req, res);
 });
 

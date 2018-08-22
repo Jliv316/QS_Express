@@ -27,6 +27,18 @@ describe('API Routes', () => {
 
   beforeEach((done) => {
     database.seed.run()
+      .then(() => {
+        return Promise.all([
+          database('foods').del()
+        ])
+      })
+      .then(() => {
+        return Promise.all([
+          database('foods').insert({ name: "chicken", calories: 100, id: 1 }),
+          database('foods').insert({ name: "spicy chicken", calories: 120, id: 2 }),
+          database('foods').insert({ name: "Chicken and Waffles", calories: 750, id: 3 })
+        ])
+      })
       .then(() => done())
       .catch(error => {
         throw error;
@@ -39,16 +51,33 @@ describe('API Routes', () => {
         .post('/api/v1/foods')
         .send({
           "food": {
-            "name": "Spaghett",
-            "calories": 500
+            "name": "Chicken and Waffles",
+            "calories": 750
           }
         })
         .end((err, response) => {
           response.should.have.status(201);
-          expect(response.body.name).to.eq('Spaghett')
-          expect(response.body.calories).to.eq(500)
+          expect(response.body.name).to.eq('Chicken and Waffles')
+          expect(response.body.calories).to.eq(750)
           done();
         });
     });
   });
+
+  describe('GET /api/v1/foods', () => {
+    it('should return all foods', done => {
+      chai.request(server)
+        .get('/api/v1/foods')
+        .end((err, response) => {
+          response.should.have.status(200);
+          console.log(response.body)
+          expect(response.body[0].name).to.eq('chicken')
+          expect(response.body[0].calories).to.eq(100)
+          expect(response.body[1].name).to.eq('spicy chicken')
+          expect(response.body[1].calories).to.eq(120)
+          done();
+        });
+    });
+  });
+
 });

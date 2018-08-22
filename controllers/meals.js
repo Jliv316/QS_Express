@@ -3,12 +3,14 @@ const Meal = require('../models/meal')
 class MealsController {
   static async index(req, res) {
     let meals = await Meal.getMeals(req, res);
+    debugger;
     res.status(200).json(meals);
   }
 
   static async show(req, res) {
     let meal = await Meal.getMeal(req, res);
-    await console.log(meal);
+    debugger;
+    console.log(meal);
     res.status(200).json(meal);
   }
 
