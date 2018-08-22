@@ -37,4 +37,8 @@ At a high level, users are able to:
     
     5) localhost:3000
     
+# Main Diary Page
+<img width="618" alt="screen shot 2018-08-22 at 5 10 09 pm" src="https://user-images.githubusercontent.com/35744655/44495699-491ace00-a62e-11e8-9675-59366c1ddd35.png">
+
+# Manage Foods Page
 
