@@ -3,6 +3,8 @@
 
 Quantified Self
 
+[![Waffle.io - Issues in progress](https://badge.waffle.io/Jliv316/QS_Express.png?label=in%20progress&title=In%20Progress)](http://waffle.io/Jliv316/QS_Express)
+
 Pearson’s Law:
 
     “That which is measured improves. That which is measured and reported improves exponentially.” - Karl Pearson
