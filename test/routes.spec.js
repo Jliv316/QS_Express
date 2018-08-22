@@ -57,8 +57,9 @@ describe('API Routes', () => {
         })
         .end((err, response) => {
           response.should.have.status(201);
-          expect(response.body.name).to.eq('Chicken and Waffles')
-          expect(response.body.calories).to.eq(750)
+          console.log(response.body)
+          expect(response.body[0].name).to.eq('Chicken and Waffles')
+          expect(response.body[0].calories).to.eq(750)
           done();
         });
     });
@@ -70,11 +71,25 @@ describe('API Routes', () => {
         .get('/api/v1/foods')
         .end((err, response) => {
           response.should.have.status(200);
-          console.log(response.body)
           expect(response.body[0].name).to.eq('chicken')
           expect(response.body[0].calories).to.eq(100)
-          expect(response.body[1].name).to.eq('spicy chicken')
-          expect(response.body[1].calories).to.eq(120)
+          expect(response.body[1].name).to.eq('Chicken and Waffles')
+          expect(response.body[1].calories).to.eq(750)
+          expect(response.body[2].name).to.eq('spicy chicken')
+          expect(response.body[2].calories).to.eq(120)
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/foods/:id', () => {
+    it('should return all foods', done => {
+      chai.request(server)
+        .get('/api/v1/foods/1')
+        .end((err, response) => {
+          response.should.have.status(200);
+          expect(response.body[0].name).to.eq('chicken')
+          expect(response.body[0].calories).to.eq(100)
           done();
         });
     });
