@@ -11,10 +11,9 @@ class Meal {
         .where('meal_foods.meal_id', meal.id)
 
       meal['foods'] = foods;
-
+      // console.log(meal);
       return meal
     }))
-    console.log(allMeals);
   }
 
   static async getMeal(req, res) {
