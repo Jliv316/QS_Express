@@ -77,22 +77,6 @@ describe('API Routes', () => {
   //   });
   // });
 
-  // describe('GET /api/v1/meals', () => {
-  //   it('should return all meals and food corresponding to each meal', done => {
-  //     chai.request(server)
-  //       .get('/api/v1/foods')
-  //       .end((err, response) => {
-  //         response.should.have.status(200);
-  //         expect(response.body[0].name).to.eq('chicken')
-  //         expect(response.body[0].calories).to.eq(100)
-  //         expect(response.body[1].name).to.eq('Chicken and Waffles')
-  //         expect(response.body[1].calories).to.eq(750)
-  //         expect(response.body[2].name).to.eq('spicy chicken')
-  //         expect(response.body[2].calories).to.eq(120)
-  //         done();
-  //       });
-  //   });
-  // });
 
   describe('GET /api/v1/meals/:meal_id/foods', () => {
     it('should return specific meal and all food corresponding to that meal', done => {
@@ -100,8 +84,29 @@ describe('API Routes', () => {
         .get('/api/v1/meals/1/foods')
         .end((err, response) => {
           response.should.have.status(200);
-          expect(response.body[0].name).to.eq('chicken')
-          expect(response.body[0].calories).to.eq(100)
+          expect(response.body.id).to.eq(1)
+          expect(response.body.name).to.eq('Breakfast')
+          expect(response.body.foods[0].name).to.eq('chicken')
+          expect(response.body.foods[0].calories).to.eq(100)
+          expect(response.body.foods[1].name).to.eq('spicy chicken')
+          expect(response.body.foods[1].calories).to.eq(120)
+          done();
+        });
+    });
+  });
+  describe('GET /api/v1/meals', () => {
+    it('should return specific meal and all food corresponding to that meal', done => {
+      chai.request(server)
+        .get('/api/v1/meals')
+        .end((err, response) => {
+          console.log(response.body);
+          response.should.have.status(200);
+          expect(response.body.id).to.eq(1)
+          expect(response.body.name).to.eq('Breakfast')
+          expect(response.body.foods[0].name).to.eq('chicken')
+          expect(response.body.foods[0].calories).to.eq(100)
+          expect(response.body.foods[1].name).to.eq('spicy chicken')
+          expect(response.body.foods[1].calories).to.eq(120)
           done();
         });
     });

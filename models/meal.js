@@ -22,7 +22,6 @@ class Meal {
         {id: foods[1].id, name: foods[1].name, calories: foods[1].calories}
       ]
     }
-    console.log(meal_foods);
     return meal_foods;
     
   }
