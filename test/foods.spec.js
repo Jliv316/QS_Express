@@ -56,6 +56,7 @@ describe('API Routes', () => {
           }
         })
         .end((err, response) => {
+          console.log(response.body);
           response.should.have.status(201);
           expect(response.body[0].name).to.eq('Chicken and Waffles')
           expect(response.body[0].calories).to.eq(750)
