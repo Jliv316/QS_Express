@@ -3,7 +3,6 @@ const Meal = require('../models/meal')
 class MealsController {
   static async index(req, res) {
     let meals = await Meal.getMeals(req, res);
-    console.log(meals);
     res.status(200).json(meals);
   }
 

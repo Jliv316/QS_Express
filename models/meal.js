@@ -9,9 +9,10 @@ class Meal {
       let foods = await database('foods').select('foods.id', 'foods.name', 'foods.calories')
         .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
         .where('meal_foods.meal_id', meal.id)
-
       meal['foods'] = foods;
       // console.log(meal);
+      console.log(meal);
+      console.log('hello');
       return meal
     }))
   }
