@@ -5,8 +5,6 @@ const database = require('knex')(configuration);
 class Meal {
   static async getMeals(req, res) {
     let meals = await database('meals').select();
-    let mealFoods = await database('meal_foods').select();
-    console.log(mealFoods);
     let allMeals = await Promise.all(meals.map( async (meal) => {
       let foods = await database('foods')
         .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
