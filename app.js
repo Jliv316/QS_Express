@@ -52,6 +52,10 @@ app.get('/api/v1/meals/:meal_id/foods', (req, res) => {
   MealsController.show(req, res);
 });
 
+app.post('/api/v1/meals/:meal_id/foods/:id', (req, res) => {
+  MealsController.create(req, res);
+});
+
 
 
 // server
