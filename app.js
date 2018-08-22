@@ -56,6 +56,10 @@ app.post('/api/v1/meals/:meal_id/foods/:id', (req, res) => {
   MealsController.create(req, res);
 });
 
+app.delete('/api/v1/meals/:meal_id/:id', (req, res) => {
+  MealsController.delete(req, res);
+});
+
 
 
 // server

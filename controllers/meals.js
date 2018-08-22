@@ -14,8 +14,15 @@ class MealsController {
   static async create(req, res) {
     let meal = await Meal.singleMeal(req, res);
     let food = await Food.getFood(req, res);
-    let meal_food = await Meal.create(req, res);
+    let meal_food = await Meal.createMealFood(req, res);
     res.status(201).json({message: `successfully added ${food.name} to ${meal.name}`});
+  }
+
+  static async delete(req, res) {
+    let meal = await Meal.singleMeal(req, res);
+    let food = await Food.getFood(req, res);
+    await Meal.deletMealFood(req, res);
+    res.status(200).json({ message: `successfully deleted ${food.name} from ${meal.name}` });
   }
 
 }
