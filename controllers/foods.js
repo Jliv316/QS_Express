@@ -11,8 +11,8 @@ class FoodsController {
     res.status(200).json(foods);
   }
 
-  static create(req, res) {
-    let food = Food.createFood(req, res);
+  static async create(req, res) {
+    let food = await Food.createFood(req, res);
     res.status(201).json(food);
   }
 

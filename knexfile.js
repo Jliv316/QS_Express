@@ -4,9 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: {
-      filename: 'postgres://localhost/qs_express'
-    },
+    connection: 'postgres://localhost/qs_express',
     migrations: {
       directory: './db/migrations'
     },
