@@ -1,4 +1,5 @@
 const Meal = require('../models/meal')
+const Food = require('../models/food')
 
 class MealsController {
   static async index(req, res) {
@@ -21,7 +22,7 @@ class MealsController {
   static async delete(req, res) {
     let meal = await Meal.singleMeal(req, res);
     let food = await Food.getFood(req, res);
-    await Meal.deletMealFood(req, res);
+    await Meal.deleteMealFood(req, res);
     res.status(200).json({ message: `successfully deleted ${food.name} from ${meal.name}` });
   }
 
