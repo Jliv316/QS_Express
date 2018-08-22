@@ -6,9 +6,9 @@ exports.seed = function (knex, Promise) {
       return Promise.all([
         knex('meals').insert([
           { id: 1, name: 'Breakfast' },
-          { id: 2, name: 'Lunch' },
-          { id: 3, name: 'Dinner' },
-          { id: 4, name: 'Snacks' }
+          { id: 2, name: 'Snacks' },
+          { id: 3, name: 'Lunch' },
+          { id: 4, name: 'Dinner' }
         ])
       ])
     })

@@ -40,16 +40,16 @@ class Meal {
   static async createMealFood(req, res) {
     let meal_id = req.params.meal_id;
     let food_id = req.params.id;
+    console.log(meal_id);
     await database('meal_foods').insert({meal_id: meal_id, food_id: food_id}, 'id');
   }
 
   static async deleteMealFood(req, res) {
     let meal_id = req.params.meal_id;
     let food_id = req.params.id;
-    await database('meal_foods')
-      .where('food_id', food_id)
-      .where('meal_id', meal_id)
-      .del()
+    let meal = await database('meals').where({ id: meal_id }).select();
+    let food = await database('foods').where({ id: food_id }).select();
+    await database('meal_foods').where({ meal_id: meal[0].id, food_id: food[0].id }).del();
   }
 }
 
