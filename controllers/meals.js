@@ -8,6 +8,7 @@ class MealsController {
 
   static async show(req, res) {
     let meal = await Meal.getMeal(req, res);
+    await console.log(meal);
     res.status(200).json(meal);
   }
 

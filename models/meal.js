@@ -8,23 +8,16 @@ class Meal {
   }
 
   static async getMeal(req, res) {
-    database('meals').where('id', req.params.id).select()
-      .then((meal) => {
-        let singleMeal = meal.map((meal) => {
-          return database('foods').select('foods.id', 'foods.name', 'foods.calories')
+    let meal = await database('meals').where('id', req.params.id).select()
+        let foods = await meal.map( async (meal) => {
+          return await database('foods').select('foods.id', 'foods.name', 'foods.calories')
             .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
             .where('meal_foods.meal_id', meal.id)
-            .then((foods) => {
-              meal['foods'] = foods;
+          })
+        console.log(foods)
+        meal['foods'] = await foods;
 
-              return meal;
-            })
-        })
-        return Promise.all(singleMeal)
-      })
-      .then((meal) => {
-        res.status(200).json(meal);
-      })
+    return meal;
   }
 }
 
