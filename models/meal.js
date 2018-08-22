@@ -22,7 +22,7 @@ class Meal {
 
   static async getMeal(req, res) {
     let meal_id = req.params.meal_id
-    let meal = await database('meals').where('id', req.params.meal_id).select()
+    let meal = await database('meals').where('id', meal_id).select()
     let foods = await database('meals').select()
       .where('meals.id', meal_id)
       .join('meal_foods', 'meals.id', '=', 'meal_foods.meal_id')
@@ -35,7 +35,12 @@ class Meal {
       ]
     }
     return meal_foods;
-    
+  }
+
+  static async createMeal(req, res) {
+    let meal_id = req.params.meal_id;
+    let food_id = req.params.id;
+    await database('meal_foods').insert({meal_id: meal_id, food_id: food_id}, 'id');
   }
 }
 
