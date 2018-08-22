@@ -10,11 +10,9 @@ class Meal {
         .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
         .where('meal_foods.meal_id', meal.id)
       meal['foods'] = foods;
-      // console.log(meal);
-      console.log(meal);
-      console.log('hello');
       return meal
     }))
+    return allMeals;
   }
 
   static async getMeal(req, res) {
