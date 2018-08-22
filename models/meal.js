@@ -4,7 +4,8 @@ const database = require('knex')(configuration);
 
 class Meal {
   static async getMeals(req, res) {
-    return await database('meals').select();
+    let meals = await database('meals').select();
+
   }
 
   static async getMeal(req, res) {
