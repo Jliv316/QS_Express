@@ -1,6 +1,6 @@
 var express = require('express');
 var cors = require('cors');
-
+// thrid party imports
 const bodyParser = require('body-parser');
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
@@ -16,7 +16,8 @@ app.use(cors());
 const FoodsController = require('./controllers/foods');
 const MealsController = require('./controllers/meals');
 
-// foods
+
+// foods routes
 app.get('/api/v1/foods', (req, res) => {
   FoodsController.index(req, res);
 });
@@ -42,8 +43,7 @@ app.get('/', (req, res) => {
 });
 
 
-
-// meals
+// meals routes
 app.get('/api/v1/meals', (req, res) => {
   MealsController.index(req, res);
 });
