@@ -13,7 +13,7 @@ class FoodsController {
 
   static async create(req, res) {
     let food = await Food.createFood(req, res);
-    res.status(201).json(food);
+    return res.status(201).json(food);
   }
 
   static async update(req, res){

@@ -13,8 +13,9 @@ class Food {
 
   static async createFood(req, res) {
     let newFood = req.body.food;
-   return await database('foods').insert(newFood)
+   let createdFood = await database('foods').insert(newFood)
       .returning(['id', 'name', 'calories'])
+      return createdFood[0];
   }
 
   static async updateFood(req, res) {
