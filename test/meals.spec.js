@@ -57,24 +57,16 @@ describe('API Routes', () => {
       });
   });
 
-  // describe('POST /api/v1/foods', () => {
-  //   it('creates a new food', done => {
-  //     chai.request(server)
-  //       .post('/api/v1/foods')
-  //       .send({
-  //         "food": {
-  //           "name": "Chicken and Waffles",
-  //           "calories": 750
-  //         }
-  //       })
-  //       .end((err, response) => {
-  //         response.should.have.status(201);
-  //         expect(response.body[0].name).to.eq('Chicken and Waffles')
-  //         expect(response.body[0].calories).to.eq(750)
-  //         done();
-  //       });
-  //   });
-  // });
+  describe('POST /api/v1/meals/:meal_id/foods/:id', () => {
+    it('creates a new meal food', done => {
+      chai.request(server)
+        .post('/api/v1/meals/1/foods/1')
+        .end((err, response) => {
+          response.should.have.status(201);
+          done();
+        });
+    });
+  });
 
 
   describe('GET /api/v1/meals/:meal_id/foods', () => {
@@ -108,33 +100,15 @@ describe('API Routes', () => {
     });
   });
 
-  // describe('PATCH /api/v1/foods/:id', () => {
-  //   it('should updated and return that food', done => {
-  //     chai.request(server)
-  //       .patch('/api/v1/foods/1')
-  //       .send({
-  //         food: {
-  //           name: "French Toast Sticks",
-  //           calories: 350
-  //         }
-  //       })
-  //       .end((err, response) => {
-  //         response.should.have.status(200);
-  //         expect(response.body[0].name).to.eq('French Toast Sticks')
-  //         expect(response.body[0].calories).to.eq(350)
-  //         done();
-  //       });
-  //   });
-  // });
 
-  // describe('DELETE /api/v1/foods/:id', () => {
-  //   it('should delete specific food', done => {
-  //     chai.request(server)
-  //       .delete('/api/v1/foods/1')
-  //       .end((err, response) => {
-  //         response.should.have.status(204);
-  //         done();
-  //       });
-  //   });
-  // });
+  describe('DELETE /api/v1/meals/:meal_id/foods/:id', () => {
+    it('should delete a specific food from a meal', done => {
+      chai.request(server)
+        .delete('/api/v1/meals/1/foods/1')
+        .end((err, response) => {
+          response.should.have.status(204);
+          done();
+        });
+    });
+  });
 });
