@@ -42,7 +42,6 @@ class Meal {
   //     .returning(['id', 'name', 'calories'])
   //   meal['foods'] = foods;
   //   return meal
-  //   console.log(meal);
 
   static async createMealFood(req, res) {
     let meal_id = req.params.meal_id;
