@@ -27,20 +27,28 @@ class Meal {
       .where('meals.id', meal_id)
       .join('meal_foods', 'meals.id', '=', 'meal_foods.meal_id')
       .join('foods', 'foods.id', '=', 'meal_foods.food_id')
-    let meal_foods = await {
-      id: meal[0].id,
-      name: meal[0].name,
-      foods: [
-        {id: foods[0].id, name: foods[0].name, calories: foods[0].calories}
-      ]
-    }
-    return meal_foods;
+      meal = meal[0];
+      meal['foods'] = foods;
+      console.log(meal);
+
+    return meal;
   }
+
+  // static async getMeal(req, res) {
+  //   let meal_id = req.params.meal_id
+  //   let meal = await database('meals').where('id', meal_id).select();
+  //   let foods = await database('foods').select('foods.id', 'foods.name', 'foods.calories')
+  //     .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
+  //     .where('meal_foods.meal_id', meal.id)
+  //     .returning(['id', 'name', 'calories'])
+  //   meal['foods'] = foods;
+  //   return meal
+  //   console.log(meal);
+  // }
 
   static async createMealFood(req, res) {
     let meal_id = req.params.meal_id;
     let food_id = req.params.id;
-    console.log(meal_id);
     await database('meal_foods').insert({meal_id: meal_id, food_id: food_id}, 'id');
   }
 

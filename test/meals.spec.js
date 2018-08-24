@@ -85,11 +85,10 @@ describe('API Routes', () => {
   });
   
   describe('GET /api/v1/meals', () => {
-    it('should return specific meal and all food corresponding to that meal', done => {
+    it('should return all foods for each meal', done => {
       chai.request(server)
         .get('/api/v1/meals')
         .end((err, response) => {
-          console.log(response.body);
           response.should.have.status(200);
           expect(response.body[0].name).to.eq('Breakfast')
           expect(response.body[0].foods[0].name).to.eq('chicken')
