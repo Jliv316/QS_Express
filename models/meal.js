@@ -38,8 +38,6 @@ class Meal {
   //   let meal = await database('meals').where('id', meal_id).select();
   //   let foods = await database('foods').select('foods.id', 'foods.name', 'foods.calories')
   //     .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
-  //     .where('meal_foods.meal_id', meal.id)
-  //     .returning(['id', 'name', 'calories'])
 
   static async createMealFood(req, res) {
     let meal_id = req.params.meal_id;
