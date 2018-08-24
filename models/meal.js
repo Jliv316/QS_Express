@@ -40,8 +40,6 @@ class Meal {
   //     .innerJoin('meal_foods', 'foods.id', 'meal_foods.food_id')
   //     .where('meal_foods.meal_id', meal.id)
   //     .returning(['id', 'name', 'calories'])
-  //   meal['foods'] = foods;
-  //   return meal
 
   static async createMealFood(req, res) {
     let meal_id = req.params.meal_id;
