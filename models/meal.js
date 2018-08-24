@@ -29,7 +29,6 @@ class Meal {
       .join('foods', 'foods.id', '=', 'meal_foods.food_id')
       meal = meal[0];
       meal['foods'] = foods;
-      console.log(meal);
 
     return meal;
   }
