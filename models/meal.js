@@ -33,8 +33,6 @@ class Meal {
     return meal;
   }
 
-  // static async getMeal(req, res) {
-
   static async createMealFood(req, res) {
     let meal_id = req.params.meal_id;
     let food_id = req.params.id;
