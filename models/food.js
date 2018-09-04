@@ -41,7 +41,7 @@ class Food {
     let favFoods = [];
     allFoods.map((food) => {
       if (currentCount == parseInt(food.count)){
-        let lastElement = favFoods[-1];
+        let lastElement = favFoods[favFoods.length - 1];
         lastElement.foods.push( {"name": food.name, "calories": food.calories} )
       } else {
         let newFood = {
@@ -52,7 +52,6 @@ class Food {
         currentCount = food.count;
       }
     })
-    console.log(favFoods);
     return favFoods;
   }
 }
