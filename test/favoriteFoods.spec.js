@@ -63,12 +63,13 @@ describe('API Routes', () => {
       chai.request(server)
         .get('/api/v1/favorite_foods')
         .end((err, response) => {
+          console.log(response.body)
           response.should.have.status(200);
           expect(response.body[0].timesEaten).to.eq(3)
-          expect(response.body[0].foods[0]).to.eq("chicken")
-          expect(response.body[0].foods[1]).to.eq("Chicken and Waffles")
+          expect(response.body[0].foods[0].name).to.eq("Chicken and Waffles")
+          expect(response.body[0].foods[1].name).to.eq("chicken")
           expect(response.body[1].timesEaten).to.eq(2)
-          expect(response.body[1].foods[0]).to.eq("Cheetos")
+          expect(response.body[1].foods[0].name).to.eq("Cheetos")
           done();
         });
     });
