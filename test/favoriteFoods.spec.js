@@ -82,7 +82,7 @@ describe('API Routes', () => {
         .end((err, response) => {
           console.log(response.body)
           response.should.have.status(200);
-          expect(response.body[0].foods[0].mealsWhenEaten[0]).to.eq("Breakfast")
+          expect(response.body[0].foods[0].mealsWhenEaten[0]).to.eq("Snack")
           done();
         });
     });
