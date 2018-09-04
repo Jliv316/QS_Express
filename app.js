@@ -16,6 +16,7 @@ app.use(cors());
 const FoodsController = require('./controllers/foods');
 const MealsController = require('./controllers/meals');
 const FavoritesController = require('./controllers/favorites');
+const RecipesController = require('./controllers/recipes');
 
 
 // foods routes
@@ -68,6 +69,11 @@ app.get('/api/v1/favorite_foods', (req, res) => {
 
 app.get('/api/v1/favorite_foods/meals', (req, res) => {
   FavoritesController.show(req, res);
+});
+
+// yumly api recipe route
+app.get('/api/v1/foods/:id/recipes', (req, res) => {
+  RecipesController.show(req, res);
 });
 
 
