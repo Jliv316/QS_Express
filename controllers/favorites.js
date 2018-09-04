@@ -7,8 +7,9 @@ class FavoritesController {
   }
 
   static async show(req, res) {
-    let foods = await Food.favoriteFoodsMeals(req, res);
-    res.status(200).json(foods);
+    let favFoods = await Food.favoriteFoods(req, res);
+    let favFoodsMeals = await Food.favoriteFoodsMeals(favFoods);
+    res.status(200).json(favFoodsMeals);
   }
 
 }
