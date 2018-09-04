@@ -66,6 +66,10 @@ app.get('/api/v1/favorite_foods', (req, res) => {
   FavoritesController.index(req, res);
 });
 
+app.get('/api/v1/favorite_foods/meals', (req, res) => {
+  FavoritesController.show(req, res);
+});
+
 
 
 // server

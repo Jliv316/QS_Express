@@ -75,5 +75,18 @@ describe('API Routes', () => {
     });
   });
 
+  describe('GET /api/v1/favorite_foods/meals', () => {
+    it('should return the top five favorite foods with meals', done => {
+      chai.request(server)
+        .get('/api/v1/favorite_foods/meals')
+        .end((err, response) => {
+          console.log(response.body)
+          response.should.have.status(200);
+          expect(response.body[0].foods[0].mealsWhenEaten[0]).to.eq("Snack")
+          done();
+        });
+    });
+  });
+
 
 });

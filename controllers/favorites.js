@@ -6,6 +6,12 @@ class FavoritesController {
     res.status(200).json(foods);
   }
 
+  static async show(req, res) {
+    let favFoods = await Food.favoriteFoods(req, res);
+    let favFoodsMeals = await Food.favoriteFoodsMeals(favFoods);
+    res.status(200).json(favFoodsMeals);
+  }
+
 }
 
 module.exports = FavoritesController;
