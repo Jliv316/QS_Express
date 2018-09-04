@@ -35,13 +35,25 @@ class Food {
   }
 
   static async favoriteFoods(req, res){
-    let result = await database.raw('SELECT foods.name, count(*) FROM foods INNER JOIN meal_foods ON foods.id = meal_foods.food_id GROUP BY foods.name');
+    let result = await database.raw('SELECT foods.name, foods.calories, count(*) FROM foods INNER JOIN meal_foods ON foods.id = meal_foods.food_id GROUP BY foods.name, foods.calories');
     let allFoods = result.rows;
-    let favFoods = allFoods.map((food) => {
-      return food;
+    let currentCount = 0;
+    let favFoods = [];
+    allFoods.map((food) => {
+      if (currentCount == parseInt(food.count)){
+        let lastElement = favFoods[-1];
+        lastElement.foods.push( {"name": food.name, "calories": food.calories} )
+      } else {
+        let newFood = {
+          "timesEaten": parseInt(food.count),
+          "foods": [ {"name": food.name, "calories": food.calories} ]
+        }
+        favFoods.push(newFood);
+        currentCount = food.count;
+      }
     })
     console.log(favFoods);
-    return result.rows;
+    return favFoods;
   }
 }
 
