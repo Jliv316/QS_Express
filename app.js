@@ -15,6 +15,7 @@ app.use(cors());
 // imports
 const FoodsController = require('./controllers/foods');
 const MealsController = require('./controllers/meals');
+const FavoritesController = require('./controllers/favorites');
 
 
 // foods routes
@@ -58,6 +59,11 @@ app.post('/api/v1/meals/:meal_id/foods/:id', (req, res) => {
 
 app.delete('/api/v1/meals/:meal_id/foods/:id', (req, res) => {
   MealsController.delete(req, res);
+});
+
+// favorite foods route
+app.get('/api/v1/favorite_foods', (req, res) => {
+  FavoritesController.index(req, res);
 });
 
 
