@@ -63,7 +63,6 @@ describe('API Routes', () => {
       chai.request(server)
         .get('/api/v1/favorite_foods')
         .end((err, response) => {
-          console.log(response.body)
           response.should.have.status(200);
           expect(response.body[0].timesEaten).to.eq(3)
           expect(response.body[0].foods[0].name).to.eq("Chicken and Waffles")
@@ -80,7 +79,6 @@ describe('API Routes', () => {
       chai.request(server)
         .get('/api/v1/favorite_foods/meals')
         .end((err, response) => {
-          console.log(response.body)
           response.should.have.status(200);
           expect(response.body[0].foods[0].mealsWhenEaten[0]).to.eq("Snack")
           done();

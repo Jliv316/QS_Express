@@ -61,11 +61,11 @@ describe('API Routes', () => {
   describe('GET api/v1/foods/2/recipes', () => {
     it('should return recipes with foods I have in my database', done => {
       chai.request(server)
-        .get('api/v1/foods/2/recipes')
+        .get('/api/v1/foods/2/recipes')
         .end((err, response) => {
           response.should.have.status(200);
-          expect(response.body.recipes[0].name).to.eq("Super Banana Sundae")
-          expect(response.body.recipes[0].url).to.eq("some_url")
+          expect(response.body.recipes[0].name).to.eq('Tandoori Tofu Tikka – Smokey Tofu with Tandoori Spices')
+          expect(response.body.recipes[0].url).to.eq('http://www.yummly.com/recipe/Tandoori-Tofu-Tikka-Smokey-Tofu-with-Tandoori-Spices-1018285')
           done();
         });
     });
