@@ -35,9 +35,13 @@ class Food {
   }
 
   static async favoriteFoods(req, res){
-    let foods = await database('meal_foods').select("food_id").groupBy('count')
-    console.log(foods);
-    return foods;
+    let result = await database.raw('SELECT foods.name, count(*) FROM foods INNER JOIN meal_foods ON foods.id = meal_foods.food_id GROUP BY foods.name');
+    let allFoods = result.rows;
+    let favFoods = allFoods.map((food) => {
+      return food;
+    })
+    console.log(favFoods);
+    return result.rows;
   }
 }
 
