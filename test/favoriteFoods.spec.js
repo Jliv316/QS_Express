@@ -44,3 +44,19 @@ describe('API Routes', () => {
         throw error;
       });
   });
+
+  describe('GET /api/v1/favorite_foods', () => {
+    it('should return the top five favorite foods', done => {
+      chai.request(server)
+        .get('/api/v1/favorite_foods')
+        .end((err, response) => {
+          response.should.have.status(200);
+          expect(response.body[0].name).to.eq('chicken')
+          expect(response.body[0].calories).to.eq(100)
+          done();
+        });
+    });
+  });
+
+
+});
