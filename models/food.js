@@ -33,6 +33,12 @@ class Food {
   static async deleteFood(req, res){
     await database('foods').where('id', req.params.id).delete()
   }
+
+  static async favoriteFoods(req, res){
+    let foods = await database('meal_foods').select("food_id").groupBy('count')
+    console.log(foods);
+    return foods;
+  }
 }
 
 
